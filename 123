@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantumEngine / quantum-core - GitHub Repository</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        github: {
+                            bg: '#0d1117',
+                            card: '#161b22',
+                            border: '#30363d',
+                            text: '#c9d1d9',
+                            muted: '#8b949e',
+                            accent: '#238636',
+                            accentHover: '#2ea043',
+                            link: '#58a6ff',
+                            badge: '#1f6feb'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for GitHub icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for code blocks */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b949e;
+        }
+    </style>
+</head>
+<body class="bg-github-bg text-github-text min-h-screen flex flex-col antialiased selection:bg-github-link selection:text-white">
+
+    <!-- GitHub Top Navigation -->
+    <header class="bg-[#161b22] border-b border-github-border sticky top-0 z-50 px-4 py-3 flex items-center justify-between flex-wrap gap-4">
+        <div class="flex items-center space-x-3">
+            <i class="fa-brands fa-github text-3xl text-white"></i>
+            <nav class="flex items-center space-x-2 text-sm font-semibold">
+                <span class="text-github-muted">octocat</span>
+                <span class="text-github-muted">/</span>
+                <a href="#" class="text-github-link hover:underline">quantum-core</a>
+                <span class="text-xs px-2 py-0.5 rounded-full border border-github-border text-github-muted bg-[#21262d]">Public</span>
+            </nav>
+        </div>
+
+        <div class="flex items-center space-x-3 text-sm">
+            <!-- Watchers / Stars / Forks count buttons -->
+            <div class="hidden sm:flex items-center rounded-md border border-github-border bg-[#21262d] overflow-hidden">
+                <button class="px-3 py-1 hover:bg-[#30363d] transition flex items-center space-x-2 border-r border-github-border">
+                    <i class="fa-regular fa-eye text-xs"></i>
+                    <span>Watch</span>
+                    <span class="bg-[#30363d] px-1.5 py-0.2 rounded-full text-xs">142</span>
+                </button>
+                <button class="px-2 py-1 hover:bg-[#30363d] transition text-xs">▼</button>
+            </div>
+            
+            <div class="flex items-center rounded-md border border-github-border bg-[#21262d] overflow-hidden">
+                <button class="px-3 py-1 hover:bg-[#30363d] transition flex items-center space-x-2 border-r border-github-border text-amber-400">
+                    <i class="fa-regular fa-star text-xs"></i>
+                    <span class="text-github-text">Star</span>
+                    <span class="bg-[#30363d] text-github-text px-1.5 py-0.2 rounded-full text-xs">2.4k</span>
+                </button>
+                <button class="px-2 py-1 hover:bg-[#30363d] transition text-xs">▼</button>
+            </div>
+
+            <div class="flex items-center rounded-md border border-github-border bg-[#21262d] overflow-hidden">
+                <button class="px-3 py-1 hover:bg-[#30363d] transition flex items-center space-x-2 border-r border-github-border">
+                    <i class="fa-solid fa-code-fork text-xs"></i>
+                    <span>Fork</span>
+                    <span class="bg-[#30363d] px-1.5 py-0.2 rounded-full text-xs">318</span>
+                </button>
+                <button class="px-2 py-1 hover:bg-[#30363d] transition text-xs">▼</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Repository Sub-navigation Tabs -->
+    <div class="bg-[#161b22] border-b border-github-border px-4 lg:px-8 flex overflow-x-auto space-x-6 text-sm font-medium">
+        <a href="#code" class="flex items-center space-x-2 py-3 border-b-2 border-amber-500 text-white">
+            <i class="fa-solid fa-code"></i>
+            <span>Code</span>
+        </a>
+        <a href="#issues" class="flex items-center space-x-2 py-3 border-b-2 border-transparent text-github-muted hover:text-github-text">
+            <i class="fa-regular fa-circle-dot"></i>
+            <span>Issues</span>
+            <span class="bg-[#30363d] px-1.5 py-0.2 rounded-full text-xs">12</span>
+        </a>
+        <a href="#pulls" class="flex items-center space-x-2 py-3 border-b-2 border-transparent text-github-muted hover:text-github-text">
+            <i class="fa-solid fa-code-pull-request"></i>
+            <span>Pull requests</span>
+            <span class="bg-[#30363d] px-1.5 py-0.2 rounded-full text-xs">3</span>
+        </a>
+        <a href="#actions" class="flex items-center space-x-2 py-3 border-b-2 border-transparent text-github-muted hover:text-github-text">
+            <i class="fa-solid fa-play"></i>
+            <span>Actions</span>
+        </a>
+        <a href="#security" class="flex items-center space-x-2 py-3 border-b-2 border-transparent text-github-muted hover:text-github-text">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Security</span>
+        </a>
+        <a href="#insights" class="flex items-center space-x-2 py-3 border-b-2 border-transparent text-github-muted hover:text-github-text">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Insights</span>
+        </a>
+    </div>
+
+    <!-- Main Content Grid -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- Left / Main Column (Code browser & README) -->
+        <div class="lg:col-span-3 space-y-6">
+
+            <!-- Repository toolbar (Branch switcher, file stats, clone button) -->
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-2">
+                    <button class="bg-[#21262d] border border-github-border rounded-md px-3 py-1.5 text-sm font-medium hover:bg-[#30363d] transition flex items-center space-x-2">
+                        <i class="fa-solid fa-code-branch text-github-muted"></i>
+                        <span>main</span>
+                        <i class="fa-solid fa-caret-down text-xs text-github-muted"></i>
+                    </button>
+                    <span class="text-sm text-github-muted"><strong class="text-white">14</strong> branches</span>
+                    <span class="text-sm text-github-muted"><strong class="text-white">42</strong> tags</span>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                    <button onclick="openAddFileDialog()" class="bg-[#21262d] border border-github-border rounded-md px-3 py-1.5 text-sm font-medium hover:bg-[#30363d] transition">
+                        Go to file
+                    </button>
+                    <!-- Clone Modal Trigger Button -->
+                    <div class="relative">
+                        <button onclick="toggleCloneDropdown()" class="bg-github-accent hover:bg-github-accentHover text-white px-3 py-1.5 rounded-md text-sm font-medium transition flex items-center space-x-2 shadow-sm">
+                            <i class="fa-solid fa-download text-xs"></i>
+                            <span>Code</span>
+                            <i class="fa-solid fa-caret-down text-xs"></i>
+                        </button>
+                        <!-- Clone dropdown card -->
+                        <div id="cloneDropdown" class="hidden absolute right-0 mt-2 w-80 bg-[#161b22] border border-github-border rounded-xl shadow-2xl p-4 z-30">
+                            <div class="text-xs font-semibold mb-2 text-github-muted uppercase tracking-wider">Clone repository</div>
+                            <div class="flex space-x-1 bg-[#0d1117] p-1 rounded-lg border border-github-border mb-3 text-xs">
+                                <button class="flex-1 py-1 rounded bg-[#21262d] text-white font-medium text-center">HTTPS</button>
+                                <button class="flex-1 py-1 rounded text-github-muted hover:text-white text-center">SSH</button>
+                                <button class="flex-1 py-1 rounded text-github-muted hover:text-white text-center">CLI</button>
+                            </div>
+                            <div class="flex items-center bg-[#0d1117] border border-github-border rounded-md px-3 py-2 text-xs">
+                                <input id="cloneUrlInput" type="text" readonly value="https://github.com/octocat/quantum-core.git" class="bg-transparent text-github-text w-full focus:outline-none">
+                                <button onclick="copyCloneUrl()" class="text-github-muted hover:text-white ml-2 transition" title="Copy to clipboard">
+                                    <i id="copyIcon" class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                            <p class="text-[11px] text-github-muted mt-2">Clone with Git or checkout with SVN using the repository's web address.</p>
+                            <div class="border-t border-github-border mt-3 pt-3 flex flex-col space-y-2 text-xs">
+                                <a href="#" class="text-github-link hover:underline flex items-center justify-between">
+                                    <span>Open with GitHub Desktop</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                                <a href="#" onclick="triggerZipDownload(event)" class="text-github-link hover:underline flex items-center justify-between">
+                                    <span>Download ZIP</span>
+                                    <i class="fa-solid fa-download text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Latest Commit Info & File Browser Box -->
+            <div class="border border-github-border rounded-lg bg-github-card overflow-hidden">
+                <div class="bg-[#21262d] px-4 py-3 border-b border-github-border flex items-center justify-between text-xs sm:text-sm">
+                    <div class="flex items-center space-x-3">
+                        <img src="https://placehold.co/24x24/58a6ff/ffffff?text=O" alt="Avatar" class="w-6 h-6 rounded-full">
+                        <a href="#" class="font-medium text-white hover:text-github-link">octocat</a>
+                        <a href="#" class="text-github-muted hover:text-github-link truncate max-w-[200px] sm:max-w-md">feat: implement quantum entanglement simulator v2.4</a>
+                    </div>
+                    <div class="flex items-center space-x-3 text-github-muted shrink-0">
+                        <span class="hidden md:inline"><span>Latest commit</span> <a href="#" class="text-github-link font-mono">c74f8a2</a></span>
+                        <span>3 days ago</span>
+                        <span class="font-mono bg-[#161b22] px-2 py-0.5 rounded border border-github-border text-xs">1,420 commits</span>
+                    </div>
+                </div>
+
+                <!-- File List Table -->
+                <div class="divide-y divide-github-border text-sm">
+                    <div class="flex items-center justify-between px-4 py-2.5 hover:bg-[#1f242c] transition cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-regular fa-folder text-github-link w-5 text-center"></i>
+                            <span class="font-medium hover:underline text-white">.github/workflows</span>
+                        </div>
+                        <span class="text-github-muted text-xs truncate max-w-[200px] sm:max-w-xs">ci: update automated test matrix</span>
+                        <span class="text-github-muted text-xs">2 weeks ago</span>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-2.5 hover:bg-[#1f242c] transition cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-regular fa-folder text-github-link w-5 text-center"></i>
+                            <span class="font-medium hover:underline text-white">src</span>
+                        </div>
+                        <span class="text-github-muted text-xs truncate max-w-[200px] sm:max-w-xs">refactor: optimize quaternion matrix math</span>
+                        <span class="text-github-muted text-xs">3 days ago</span>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-2.5 hover:bg-[#1f242c] transition cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-regular fa-folder text-github-link w-5 text-center"></i>
+                            <span class="font-medium hover:underline text-white">tests</span>
+                        </div>
+                        <span class="text-github-muted text-xs truncate max-w-[200px] sm:max-w-xs">test: add coverage for edge cases</span>
+                        <span class="text-github-muted text-xs">last month</span>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-2.5 hover:bg-[#1f242c] transition cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-regular fa-file-lines text-github-muted w-5 text-center"></i>
+                            <span class="font-medium hover:underline">.gitignore</span>
+                        </div>
+                        <span class="text-github-muted text-xs truncate max-w-[200px] sm:max-w-xs">chore: ignore build artifacts</span>
+                        <span class="text-github-muted text-xs">5 months ago</span>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-2.5 hover:bg-[#1f242c] transition cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-regular fa-file-lines text-github-muted w-5 text-center"></i>
+                            <span class="font-medium hover:underline">package.json</span>
+                        </div>
+                        <span class="text-github-muted text-xs truncate max-w-[200px] sm:max-w-xs">chore(deps): bump version to 2.4.0</span>
+                        <span class="text-github-muted text-xs">3 days ago</span>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-2.5 hover:bg-[#1f242c] transition cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-regular fa-file-lines text-github-link w-5 text-center"></i>
+                            <span class="font-medium hover:underline text-white">README.md</span>
+                        </div>
+                        <span class="text-github-muted text-xs truncate max-w-[200px] sm:max-w-xs">docs: update documentation links</span>
+                        <span class="text-github-muted text-xs">3 days ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- README.md Presentation Box -->
+            <div class="border border-github-border rounded-lg bg-github-card overflow-hidden">
+                <div class="bg-[#21262d] px-4 py-3 border-b border-github-border flex items-center justify-between">
+                    <div class="flex items-center space-x-2 text-sm font-semibold text-github-text">
+                        <i class="fa-solid fa-book-open text-github-muted"></i>
+                        <span>README.md</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="switchTab('readme')" id="tabReadmeBtn" class="px-3 py-1 text-xs font-semibold rounded bg-[#30363d] text-white transition">Documentation</button>
+                        <button onclick="switchTab('demo')" id="tabDemoBtn" class="px-3 py-1 text-xs font-semibold rounded text-github-muted hover:text-white transition">Live Preview / Demo</button>
+                    </div>
+                </div>
+
+                <!-- README Documentation Container -->
+                <div id="readmeContent" class="p-6 md:p-10 space-y-8 leading-relaxed text-github-text">
+                    
+                    <!-- Project Title & Badges -->
+                    <div class="text-center md:text-left space-y-4 border-b border-github-border pb-6">
+                        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white flex items-center space-x-3">
+                                <span>⚛️ QuantumEngine Core</span>
+                            </h1>
+                            <div class="flex flex-wrap gap-2 justify-center">
+                                <img src="https://img.shields.io/badge/status-active-success?style=flat-square" alt="Status Badge">
+                                <img src="https://img.shields.io/badge/version-2.4.0-blue?style=flat-square" alt="Version Badge">
+                                <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License Badge">
+                                <img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square" alt="PRs Badge">
+                            </div>
+                        </div>
+                        <p class="text-github-muted text-base max-w-2xl">
+                            Высокопроизводительный движок для симуляции квантовых вычислений, матричных преобразований и алгоритмов запутанности на базе WebAssembly и TypeScript.
+                        </p>
+                    </div>
+
+                    <!-- Quick Navigation -->
+                    <div class="bg-[#0d1117] border border-github-border rounded-lg p-4 text-sm">
+                        <p class="font-semibold text-white mb-2">Содержание:</p>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-github-link">
+                            <li><a href="#features" class="hover:underline">• Главные особенности</a></li>
+                            <li><a href="#quickstart" class="hover:underline">• Быстрый старт и установка</a></li>
+                            <li><a href="#techstack" class="hover:underline">• Стек технологий</a></li>
+                            <li><a href="#api" class="hover:underline">• Пример использования API</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Features Section -->
+                    <div id="features" class="space-y-4">
+                        <h2 class="text-xl font-bold text-white border-b border-github-border pb-2 flex items-center space-x-2">
+                            <i class="fa-solid fa-bolt text-amber-400"></i>
+                            <span>Главные особенности</span>
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="border border-github-border p-4 rounded-lg bg-[#0d1117]">
+                                <div class="text-github-link font-semibold mb-1"><i class="fa-solid fa-gauge-high mr-2"></i>Максимальная скорость</div>
+                                <p class="text-xs text-github-muted">Оптимизированные ядра на WebAssembly выполняют квантовые симуляции в 10 раз быстрее аналогов на JS.</p>
+                            </div>
+                            <div class="border border-github-border p-4 rounded-lg bg-[#0d1117]">
+                                <div class="text-github-link font-semibold mb-1"><i class="fa-solid fa-cube mr-2"></i>Масштабируемые кубиты</div>
+                                <p class="text-xs text-github-muted">Поддержка многопоточных квантовых регистров до 64 кубитов с динамическим распределением памяти.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Start & Installation -->
+                    <div id="quickstart" class="space-y-4">
+                        <h2 class="text-xl font-bold text-white border-b border-github-border pb-2 flex items-center space-x-2">
+                            <i class="fa-solid fa-terminal text-emerald-400"></i>
+                            <span>Быстрый старт</span>
+                        </h2>
+                        <p class="text-sm">Для установки пакета и запуска локального сервера выполните следующие команды в терминале:</p>
+                        
+                        <div class="relative bg-[#0d1117] border border-github-border rounded-lg p-4 font-mono text-xs text-github-text">
+                            <div class="absolute right-3 top-3">
+                                <button onclick="copySnippet(this, 'installCmds')" class="text-github-muted hover:text-white bg-[#21262d] px-2.5 py-1 rounded border border-github-border transition">
+                                    <i class="fa-regular fa-copy mr-1"></i> Копировать
+                                </button>
+                            </div>
+                            <pre id="installCmds" class="overflow-x-auto pr-24 py-1"><code># Клонирование репозитория
+git clone https://github.com/octocat/quantum-core.git
+
+# Переход в директорию проекта
+cd quantum-core
+
+# Установка зависимостей
+npm install
+
+# Запуск демонстрационного сервера
+npm run dev</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack badges -->
+                    <div id="techstack" class="space-y-4">
+                        <h2 class="text-xl font-bold text-white border-b border-github-border pb-2 flex items-center space-x-2">
+                            <i class="fa-solid fa-layer-group text-blue-400"></i>
+                            <span>Технологический стек</span>
+                        </h2>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-[#21262d] border border-github-border text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center space-x-1.5">
+                                <i class="fa-brands fa-js text-yellow-400"></i><span>TypeScript</span>
+                            </span>
+                            <span class="bg-[#21262d] border border-github-border text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center space-x-1.5">
+                                <i class="fa-solid fa-microchip text-purple-400"></i><span>WebAssembly</span>
+                            </span>
+                            <span class="bg-[#21262d] border border-github-border text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center space-x-1.5">
+                                <i class="fa-brands fa-node text-emerald-500"></i><span>Node.js</span>
+                            </span>
+                            <span class="bg-[#21262d] border border-github-border text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center space-x-1.5">
+                                <i class="fa-solid fa-wind text-sky-400"></i><span>Tailwind CSS</span>
+                            </span>
+                            <span class="bg-[#21262d] border border-github-border text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center space-x-1.5">
+                                <i class="fa-solid fa-flask text-amber-400"></i><span>Jest / Vitest</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Code Example API -->
+                    <div id="api" class="space-y-4">
+                        <h2 class="text-xl font-bold text-white border-b border-github-border pb-2 flex items-center space-x-2">
+                            <i class="fa-solid fa-code text-github-link"></i>
+                            <span>Пример использования API</span>
+                        </h2>
+                        <div class="relative bg-[#0d1117] border border-github-border rounded-lg p-4 font-mono text-xs text-github-text">
+                            <div class="absolute right-3 top-3">
+                                <button onclick="copySnippet(this, 'codeSnippet')" class="text-github-muted hover:text-white bg-[#21262d] px-2.5 py-1 rounded border border-github-border transition">
+                                    <i class="fa-regular fa-copy mr-1"></i> Копировать
+                                </button>
+                            </div>
+                            <pre id="codeSnippet" class="overflow-x-auto pr-24 py-1 text-sky-300"><code>import { QuantumRegister, HadamardGate } from 'quantum-core';
+
+// Создаем регистр из 4 кубитов
+const register = new QuantumRegister(4);
+
+// Применяем преобразование Адамара
+register.apply(new HadamardGate(), 0);
+register.entangle([0, 1]);
+
+// Вывод состояния симуляции
+console.log(register.measureState());</code></pre>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Interactive Live Demo Container (Hidden by default, shown via Tab) -->
+                <div id="demoContent" class="hidden p-6 md:p-10 space-y-6">
+                    <div class="border border-github-border rounded-xl p-6 bg-[#0d1117] text-center space-y-4">
+                        <h3 class="text-xl font-bold text-white"><i class="fa-solid fa-play text-emerald-400 mr-2"></i>Интерактивный симулятор квантового регистра</h3>
+                        <p class="text-sm text-github-muted">Нажмите кнопку ниже для запуска симуляции в реальном времени прямо в браузере.</p>
+                        
+                        <div class="p-6 bg-[#161b22] border border-github-border rounded-lg flex flex-col items-center justify-center space-y-4">
+                            <div class="text-3xl font-mono font-bold text-emerald-400" id="quantumStateDisplay">|Ψ⟩ = 0.707|00⟩ + 0.707|11⟩</div>
+                            <div class="flex space-x-3">
+                                <button onclick="runQuantumSimulation()" class="bg-github-accent hover:bg-github-accentHover text-white px-4 py-2 rounded-md font-semibold text-sm transition">
+                                    Выполнить измерение
+                                </button>
+                                <button onclick="resetQuantumSimulation()" class="bg-[#21262d] border border-github-border hover:bg-[#30363d] text-white px-4 py-2 rounded-md font-semibold text-sm transition">
+                                    Сбросить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Right Sidebar Column -->
+        <div class="lg:col-span-1 space-y-6">
+
+            <!-- About Section -->
+            <div class="space-y-3 border-b border-github-border pb-6">
+                <h3 class="font-bold text-white text-base">About</h3>
+                <p class="text-sm text-github-text">
+                    High-performance quantum computing simulation engine built with TypeScript & WebAssembly.
+                </p>
+                <div class="space-y-2 text-sm">
+                    <a href="#" class="flex items-center space-x-2 text-github-link hover:underline">
+                        <i class="fa-solid fa-globe w-4 text-github-muted"></i>
+                        <span class="truncate">https://quantum-core.dev</span>
+                    </a>
+                    <div class="flex items-center space-x-2 text-github-muted">
+                        <i class="fa-solid fa-book-bookmark w-4"></i>
+                        <span>Detailed documentation included</span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-github-muted">
+                        <i class="fa-solid fa-scale-balanced w-4"></i>
+                        <span>MIT license</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Languages breakdown -->
+            <div class="space-y-3 border-b border-github-border pb-6">
+                <h3 class="font-bold text-white text-base">Languages</h3>
+                <!-- Language percentage bar -->
+                <div class="flex h-2 rounded-full overflow-hidden bg-[#21262d]">
+                    <div class="bg-blue-500 h-full" style="width: 68.4%" title="TypeScript"></div>
+                    <div class="bg-purple-500 h-full" style="width: 24.1%" title="WebAssembly (Rust)"></div>
+                    <div class="bg-yellow-400 h-full" style="width: 7.5%" title="JavaScript"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-xs text-github-muted">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3 h-3 rounded-full bg-blue-500 inline-block"></span>
+                        <span class="text-white font-medium">TypeScript</span>
+                        <span>68.4%</span>
+                    </div>
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3 h-3 rounded-full bg-purple-500 inline-block"></span>
+                        <span class="text-white font-medium">WebAssembly</span>
+                        <span>24.1%</span>
+                    </div>
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3 h-3 rounded-full bg-yellow-400 inline-block"></span>
+                        <span class="text-white font-medium">JavaScript</span>
+                        <span>7.5%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contributors Section -->
+            <div class="space-y-3 border-b border-github-border pb-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-white text-base">Contributors</h3>
+                    <span class="bg-[#21262d] border border-github-border text-white text-xs px-2 py-0.5 rounded-full font-semibold">14</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <a href="#" title="octocat"><img src="https://placehold.co/36x36/58a6ff/ffffff?text=O" alt="octocat" class="w-9 h-9 rounded-full border border-github-border hover:opacity-85 transition"></a>
+                    <a href="#" title="torvalds"><img src="https://placehold.co/36x36/238636/ffffff?text=T" alt="torvalds" class="w-9 h-9 rounded-full border border-github-border hover:opacity-85 transition"></a>
+                    <a href="#" title="gaearon"><img src="https://placehold.co/36x36/a371f7/ffffff?text=G" alt="gaearon" class="w-9 h-9 rounded-full border border-github-border hover:opacity-85 transition"></a>
+                    <a href="#" title="yyx990803"><img src="https://placehold.co/36x36/f85149/ffffff?text=Y" alt="yyx" class="w-9 h-9 rounded-full border border-github-border hover:opacity-85 transition"></a>
+                    <a href="#" title="sindresorhus"><img src="https://placehold.co/36x36/d29922/ffffff?text=S" alt="sindresorhus" class="w-9 h-9 rounded-full border border-github-border hover:opacity-85 transition"></a>
+                    <a href="#" title="defunkt"><img src="https://placehold.co/36x36/3fb950/ffffff?text=D" alt="defunkt" class="w-9 h-9 rounded-full border border-github-border hover:opacity-85 transition"></a>
+                </div>
+            </div>
+
+            <!-- Star History / Stats -->
+            <div class="space-y-2 text-xs text-github-muted">
+                <div class="flex justify-between"><span>Releases</span><span class="text-white font-semibold">v2.4.0 (Latest)</span></div>
+                <div class="flex justify-between"><span>Used by</span><span class="text-white font-semibold">342 repositories</span></div>
+                <div class="flex justify-between"><span>Security</span><span class="text-emerald-400 font-semibold">0 Vulnerabilities</span></div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- GitHub Footer -->
+    <footer class="mt-auto border-t border-github-border py-8 px-4 text-center text-xs text-github-muted space-y-4">
+        <div class="flex flex-wrap justify-center space-x-6">
+            <a href="#" class="hover:text-github-link">© 2026 GitHub, Inc.</a>
+            <a href="#" class="hover:text-github-link">Terms</a>
+            <a href="#" class="hover:text-github-link">Privacy</a>
+            <a href="#" class="hover:text-github-link">Security</a>
+            <a href="#" class="hover:text-github-link">Status</a>
+            <a href="#" class="hover:text-github-link">Docs</a>
+            <a href="#" class="hover:text-github-link">Contact GitHub</a>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripting -->
+    <script>
+        // Toggle Clone dropdown menu
+        function toggleCloneDropdown() {
+            const dropdown = document.getElementById('cloneDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('cloneDropdown');
+            const button = e.target.closest('button');
+            if (!dropdown.contains(e.target) && (!button || !button.textContent.includes('Code'))) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        // Copy clone URL to clipboard
+        function copyCloneUrl() {
+            const input = document.getElementById('cloneUrlInput');
+            input.select();
+            input.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            
+            const icon = document.getElementById('copyIcon');
+            icon.className = "fa-solid fa-check text-emerald-400";
+            setTimeout(() => {
+                icon.className = "fa-regular fa-copy";
+            }, 2000);
+        }
+
+        // Copy generic code snippets
+        function copySnippet(btn, elementId) {
+            const preElement = document.getElementById(elementId);
+            const text = preElement.innerText;
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check mr-1 text-emerald-400"></i> Скопировано!';
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+            }, 2000);
+        }
+
+        // Switch between README and Live Demo tabs
+        function switchTab(tab) {
+            const readmeBtn = document.getElementById('tabReadmeBtn');
+            const demoBtn = document.getElementById('tabDemoBtn');
+            const readmeContent = document.getElementById('readmeContent');
+            const demoContent = document.getElementById('demoContent');
+
+            if (tab === 'readme') {
+                readmeBtn.className = "px-3 py-1 text-xs font-semibold rounded bg-[#30363d] text-white transition";
+                demoBtn.className = "px-3 py-1 text-xs font-semibold rounded text-github-muted hover:text-white transition";
+                readmeContent.classList.remove('hidden');
+                demoContent.classList.add('hidden');
+            } else {
+                demoBtn.className = "px-3 py-1 text-xs font-semibold rounded bg-[#30363d] text-white transition";
+                readmeBtn.className = "px-3 py-1 text-xs font-semibold rounded text-github-muted hover:text-white transition";
+                demoContent.classList.remove('hidden');
+                readmeContent.classList.add('hidden');
+            }
+        }
+
+        // Interactive Quantum Simulation simulator in Demo Tab
+        function runQuantumSimulation() {
+            const states = [
+                "|Ψ⟩ = 1.000|00⟩ + 0.000|11⟩ (Collapsed)",
+                "|Ψ⟩ = 0.000|00⟩ + 1.000|11⟩ (Collapsed)",
+                "|Ψ⟩ = 0.500|01⟩ + 0.866|10⟩ (Superposition)",
+                "|Ψ⟩ = 0.707|00⟩ + 0.707|11⟩ (Entangled)"
+            ];
+            const randomState = states[Math.floor(Math.random() * states.length)];
+            document.getElementById('quantumStateDisplay').innerText = randomState;
+        }
+
+        function resetQuantumSimulation() {
+            document.getElementById('quantumStateDisplay').innerText = "|Ψ⟩ = 0.707|00⟩ + 0.707|11⟩";
+        }
+
+        function openAddFileDialog() {
+            alert("Функция создания файлов доступна после авторизации через GitHub OAuth.");
+        }
+
+        function triggerZipDownload(e) {
+            e.preventDefault();
+            alert("Загрузка архива quantum-core-main.zip началась!");
+        }
+    </script>
+</body>
+</html>
