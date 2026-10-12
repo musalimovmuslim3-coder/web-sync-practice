@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>О нас</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f3ef;
+            color: #2b211b;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #2b211b;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #d9a066;
+        }
+
+        /* HERO */
+
+        .about-hero {
+            height: 420px;
+            background:
+                linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1600")
+                center/cover;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .about-hero h1 {
+            font-size: 56px;
+            margin-bottom: 15px;
+        }
+
+        .about-hero p {
+            font-size: 19px;
+        }
+
+        /* ABOUT */
+
+        .about {
+            padding: 80px 8%;
+        }
+
+        .about-container {
+            max-width: 1150px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .about-text span {
+            color: #b47742;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .about-text h2 {
+            font-size: 42px;
+            margin: 15px 0 20px;
+        }
+
+        .about-text p {
+            color: #665b54;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* FEATURES */
+
+        .features {
+            background: #2b211b;
+            padding: 70px 8%;
+            color: white;
+        }
+
+        .features-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .features-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .features-title p {
+            color: #c8beb8;
+        }
+
+        .features-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature {
+            padding: 35px 25px;
+            background: #392c24;
+            border-radius: 15px;
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            background: #46362b;
+        }
+
+        .feature-number {
+            font-size: 14px;
+            color: #d9a066;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .feature p {
+            color: #c8beb8;
+            line-height: 1.6;
+        }
+
+        /* STORY */
+
+        .story {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .story h2 {
+            font-size: 40px;
+            margin-bottom: 25px;
+        }
+
+        .story p {
+            color: #665b54;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #211914;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer p {
+            color: #b9aea7;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .about-hero h1 {
+                font-size: 40px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image img {
+                height: 300px;
+            }
+
+            .about-text h2 {
+                font-size: 32px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            Coffee House
+        </div>
+
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="about.html" class="active">О нас</a>
+            <a href="gallery.html">Галерея</a>
+            <a href="contacts.html">Контакты</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="about-hero">
+
+        <div>
+            <h1>О нас</h1>
+
+            <p>
+                Место, где хороший кофе встречается с уютной атмосферой
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about">
+
+        <div class="about-container">
+
+            <div class="about-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=900"
+                    alt="Интерьер кофейни"
+                >
+
+            </div>
+
+
+            <div class="about-text">
+
+                <span>НАША ИСТОРИЯ</span>
+
+                <h2>
+                    Больше чем просто кофейня
+                </h2>
+
+                <p>
+                    Coffee House — это уютное место для тех,
+                    кто ценит качественный кофе, приятную атмосферу
+                    и хорошее общение.
+                </p>
+
+                <p>
+                    Мы тщательно выбираем кофейные зерна,
+                    используем качественные ингредиенты и
+                    готовим каждый напиток с вниманием к деталям.
+                </p>
+
+                <p>
+                    Наша цель — создать место, куда хочется
+                    возвращаться снова и снова.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="features">
+
+        <div class="features-title">
+
+            <h2>Почему выбирают нас</h2>
+
+            <p>
+                Мы создаем особенное впечатление для каждого гостя
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature">
+
+                <div class="feature-number">
+                    01
+                </div>
+
+                <h3>Качественный кофе</h3>
+
+                <p>
+                    Используем отборные кофейные зерна
+                    для насыщенного и приятного вкуса.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-number">
+                    02
+                </div>
+
+                <h3>Уютная атмосфера</h3>
+
+                <p>
+                    Теплый интерьер и спокойная атмосфера
+                    подходят для отдыха и встреч.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-number">
+                    03
+                </div>
+
+                <h3>Забота о гостях</h3>
+
+                <p>
+                    Мы стараемся сделать каждый ваш визит
+                    комфортным и приятным.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STORY -->
+
+    <section class="story">
+
+        <div class="story-content">
+
+            <h2>
+                Наша философия
+            </h2>
+
+            <p>
+                Мы считаем, что чашка хорошего кофе может
+                сделать обычный день немного лучше.
+                Поэтому мы создаем не просто напитки,
+                а атмосферу, в которой хочется проводить время,
+                встречаться с друзьями и наслаждаться каждым моментом.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Coffee House. Все права защищены.
+        </p>
+
+    </footer>
+
+</body>
+</html>
